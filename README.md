@@ -8,35 +8,16 @@ Point cloud data contains rich geometric information and is widely applied in va
 
 
 The final accuracy results is shown in the following table:
-\begin{table*}[]
-    \centering
-    \caption{Shape Classification results on ModelNet40 dataset.}
-    \label{tab:classification-modelnet40}
-    \vspace{1mm}
-    \begin{adjustbox}{width=1\textwidth}
-    
-    \begin{tabular}{ll|cc|ccc}
-        \toprule 
-         Method& Inputs& \makecell{ OA(\%)}& \makecell{ mAcc(\%)}&F1-Score(\%) &Precision(\%) &Recall(\%) \\
-         \midrule
-         PointNet &2048 P&89 &86.1 &- &- &- \\
-         PointNet++ &1024 P &91.7 &89.0 &91.8  &92.1 &91.7  \\
-                  &1024 P+N &92.4 &89.9 &92.5 &92.6 &92.4  \\
-         PointConv &1024 P &91.7 &88.5 &91.8  &92.0 &91.7  \\
-                 &1024 P+N &92.1 &89.9 &92.2 &92.4 &92.1  \\
-         PointMLP &1024 P &93.4 &91.3 &93.4  &93.5 &93.4  \\
-                &1024 P+N &94.1 &91.4 &94.2 &94.4 &94.1  \\
-         \bottomrule
-    \end{tabular}
-    \end{adjustbox}
-    \label{tab:classification-modelnet40}
-\end{table*}
 
-
-|  | Base CNN | VGG | ResNet | ViT | Ensemble |
-| :----:| :----:| :----: |:----: |:----: |:----: |
-| Marco weighted F1-Score | 66% | 79% | 84% | 81% | 84% |
-| Marco avg F1-Score | 45% | 64% | 70% | 69% | 73% |
+| Method | Inputs | OA(%) | mAcc(%) | F1-Score(%) | Precision(%) | Recall(%) |
+| :----:| :----:| :----: |:----: |:----: |:----: |:----: |
+| PointNet | 2048 P | 89.0 | 86.1 | - | - | - |
+| PointNet++ | 1024 P | 91.7 | 89.0 | 91.8 | 92.1 | 91.7 |
+|  | 1024 P+N | 92.4 | 89.9 | 92.5 | 92.6 | 92.4 |
+| PointConv | 1024 P | 91.7 | 88.5 | 91.8 | 92.0 | 91.7 |
+|  | 1024 P+N | 92.1 | 89.9 | 92.2 | 92.4 | 92.1 |
+| PointMLP | 1024 P | 93.4 | 91.3 | 93.4 | 93.5 | 93.4 |
+|  | 1024 P+N | 94.1 | 91.4 | 94.2 | 94.4 | 94.1 |
 
 Specific hyperparameters and techniques can be found at the end of the instruction. 
 
