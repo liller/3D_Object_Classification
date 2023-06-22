@@ -7,7 +7,7 @@ Point cloud data contains rich geometric information and is widely applied in va
 
 
 
-The final accuracy results is shown in the following table:
+The Shape Classification on ModelNet40 results are shown in the following table:
 
 | Method | Inputs | OA(%) | mAcc(%) | F1-Score(%) | Precision(%) | Recall(%) |
 | :----:| :----:| :----: |:----: |:----: |:----: |:----: |
@@ -18,6 +18,13 @@ The final accuracy results is shown in the following table:
 |  | 1024 P+N | 92.1 | 89.9 | 92.2 | 92.4 | 92.1 |
 | PointMLP | 1024 P | 93.4 | 91.3 | 93.4 | 93.5 | 93.4 |
 |  | 1024 P+N | 94.1 | 91.4 | 94.2 | 94.4 | 94.1 |
+
+
+| Method | Inputs | OA(%) | mAcc(%) | F1-Score(%) | Precision(%) | Recall(%) |
+| :----:| :----:| :----: |:----: |:----: |:----: |:----: |
+| PointNet++ | 1024 P | 79.5 | 77.9 | 79.1 | 79.1 | 79.5 |
+| PointConv | 1024 P | 77.9 | 75.1 | 77.9 | 78.5 | 77.9 |
+| PointMLP | 1024 P | 86.6 | 84.5 | 86.5 | 86.7 | 86.6 |
 
 Specific hyperparameters and techniques can be found at the end of the instruction. 
 
@@ -65,49 +72,6 @@ The current project structure is shown below
     └── train_classification_PointNet++.py
 
 ```
-**main.py**: Contains all the core functions that will be executed sequentially for data loading, pre-processing, splitting dataset, data augmentation, model instance creation, model training, result prediction and evaluations. 
-
-**Modules**: Contains two files including pre_processing and results_visualization. Pre_processing do performing image processing such as normalization on the image data, divide the training set, validation set and test set. Results_visualization do plotting accuracy results and loss value curves, plotting prediction result confusion matrix.
-
-**Base_Model**: Contains  2 block basic CNN model and 3 block basic CNN model. 
-
-**VGG**: Contains 3 models trained by different approaches in transfer learning field, including training as a feature extractor. training by fine-tuning and training from scratch. 
-
-**ResNet**: Contains model of ResNet50
-
-**Transformer**: Contains ViT_b16 and ViT_b32 pretrained model. 
-
-**Ensemble_Model**: Contains the ensemble model of ResNet50 and ViT_b16. 
-
-**environment.yml**: Contain all the dependencies this project need. 
-
-
-
-## Packages required 
-
-**Pandas**: pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool,
-built on top of the Python programming language. 
-
-**Numpy**: It is a Python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for fast operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more. 
-
-**Keras**: Keras is a deep learning API written in Python, running on top of the machine learning platform TensorFlow. It was developed with a focus on enabling fast experimentation. Keras is the high-level API of TensorFlow which provides with the simple, flexible and powerful ability. 
-
-**sklearn**: Sklearn is a free software machine learning library for the Python programming language. It features various classification, regression and clustering algorithms including support-vector machines, random forests, gradient boosting, k-means and DBSCAN, and is designed to interoperate with the Python numerical and scientific libraries NumPy and SciPy.
-
-**cv2**: OpenCV-Python is a library of Python bindings designed to solve computer vision problems. 
-
-**matplotlib**:Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.  
-
-
-**seaborn**:Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.  
-
-**os**: This module provides a portable way of using operating system dependent functionality. 
-
-**random**:This module implements pseudo-random number generators for various distributions.
-
-**shutil**: The shutil module offers a number of high-level operations on files and collections of files. 
-
-
 
 
 
