@@ -27,8 +27,6 @@ The Shape Classification on ScanObjectNN results are shown in the following tabl
 | PointConv | 1024 P | 77.9 | 75.1 | 77.9 | 78.5 | 77.9 |
 | PointMLP | 1024 P | 86.6 | 84.5 | 86.5 | 86.7 | 86.6 |
 
-Specific hyperparameters and techniques can be found at the end of the instruction. 
-
 
 ## Role of each file
 The current project structure is shown below
