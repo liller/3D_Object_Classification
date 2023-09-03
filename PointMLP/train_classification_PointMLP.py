@@ -9,7 +9,7 @@ from PointMLP.utils import *
 
 
 def parse_args(args=None):
-    """Parameters"""
+
     parser = argparse.ArgumentParser('training')
     parser.add_argument('-c', '--checkpoint', type=str, metavar='PATH',
                         help='path to save checkpoint (default: checkpoint)')

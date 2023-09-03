@@ -38,13 +38,7 @@ def pc_normalize(pc):
     return pc
 
 def farthest_point_sample(point, npoint):
-    """
-    Input:
-        xyz: pointcloud data, [N, D]
-        npoint: number of samples
-    Return:
-        centroids: sampled pointcloud index, [npoint, D]
-    """
+
     N, D = point.shape
     xyz = point[:,:3]
     centroids = np.zeros((npoint,))

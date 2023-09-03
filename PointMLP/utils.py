@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 class Logger(object):
-    '''Save training process to log file with simple plot function.'''
+
     def __init__(self, fpath, title=None, resume=False):
         self.file = None
         self.resume = resume

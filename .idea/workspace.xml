@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d1cdb20c-6b0a-4009-94cd-693570d3e2db" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/PointNet2/data_util/ScanObjectNNDataloader_Merged.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PointTransformer/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PointTransformer/segmentation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PointTransformer/segmentation/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointConv/classification/provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointConv/classification/provider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointConv/data_util/ModelnetDataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointConv/data_util/ModelnetDataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointConv/data_util/ScanObjectDataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointConv/data_util/ScanObjectDataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointMLP/classification/models/PointMLP.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointMLP/classification/models/PointMLP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointMLP/classification/provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointMLP/classification/provider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointMLP/data_util/ModelnetDataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointMLP/data_util/ModelnetDataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointMLP/train_classification_PointMLP.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointMLP/train_classification_PointMLP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointMLP/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointMLP/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointNet2/classification/provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointNet2/classification/provider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointNet2/data_util/ModelnetDataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointNet2/data_util/ModelnetDataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointNet2/data_util/ScanObjectDataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/PointNet2/data_util/ScanObjectDataloader.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PointNet/data_util/ModelNetDataloader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="945">
+              <caret line="63" column="22" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PointNet/data_util/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1805">
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PointNet/train_classification_PointNet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PointNet2/data_util/ScanObjectDataloader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-500">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PointNet2/data_util/ScanObjectNNDataloader_Merged.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="e#1#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PointNet2/data_util/ShapeNetDataloader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2085">
+              <caret line="174" selection-start-line="174" selection-end-line="174" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PointNet2/segmentation/models/pointnet2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-50">
+              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PointNet2/classification/models/Pointnet2_ssg.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-65">
+              <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PointNet2/classification/provider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="536">
+              <caret line="168" selection-start-line="168" selection-end-line="168" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PointNet2/data_util/ModelnetDataloader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1400">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>log_string</find>
+      <find>timeit</find>
+      <find>farthest_point_sample_first</find>
+      <find>？</find>
+      <find>mode</find>
+      <find>modelnet</find>
+      <find>get_m</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/PointNet++/classification/pointnet2_cls_ssg.py" />
+        <option value="$PROJECT_DIR$/PointNet++/data_util/ModelnetDataloader.py" />
+        <option value="$PROJECT_DIR$/PointNet++/classification/provider.py" />
+        <option value="$PROJECT_DIR$/trian_classification_PointNet++.py" />
+        <option value="$PROJECT_DIR$/PointNet++/classification/models/Pointnet2_ssg.py" />
+        <option value="$PROJECT_DIR$/PointNet2/classification/models/Pointnet2_ssg.py" />
+        <option value="$PROJECT_DIR$/PointNet2/trian_classification_PointNet++.py" />
+        <option value="$PROJECT_DIR$/PointNet/data_util/utils.py" />
+        <option value="$PROJECT_DIR$/PointNet/data_util/ModelNetDataloader.py" />
+        <option value="$PROJECT_DIR$/PointNet/classification/model/pointnet.py" />
+        <option value="$PROJECT_DIR$/PointNet/train_classification_PointNet.py" />
+        <option value="$PROJECT_DIR$/PointConv/classification/model/PointConv.py" />
+        <option value="$PROJECT_DIR$/PointConv/train_classification_PointConv.py" />
+        <option value="$PROJECT_DIR$/PointMLP/data_util/ScanObjectDataloader.py" />
+        <option value="$PROJECT_DIR$/PointConv/segmentation/model/PointConv.py" />
+        <option value="$PROJECT_DIR$/PointConv/segmentation/provider.py" />
+        <option value="$PROJECT_DIR$/PointMLP/segmentation/model/PointMLP.py" />
+        <option value="$PROJECT_DIR$/PointMLP/data_util/ShapeNetDataloader.py" />
+        <option value="$PROJECT_DIR$/PointNet2/data_util/ShapeNetDataloader.py" />
+        <option value="$PROJECT_DIR$/PointNet2/segmentation/provider.py" />
+        <option value="$PROJECT_DIR$/Point Transformer/segmentation/models/Point Transformer.py" />
+        <option value="$PROJECT_DIR$/Point Transformer/segmentation/provider.py" />
+        <option value="$PROJECT_DIR$/Point Transformer/train_segmentation_Point Transformer.py" />
+        <option value="$PROJECT_DIR$/PointTransformer/train_segmentation_Point Transformer.py" />
+        <option value="$PROJECT_DIR$/PointTransformer/segmentation/models/PointTransformer.py" />
+        <option value="$PROJECT_DIR$/PointNet2/segmentation/models/pointnet2.py" />
+        <option value="$PROJECT_DIR$/PointNet2/train_segmentation_PointNet++.py" />
+        <option value="$PROJECT_DIR$/PointNet2/data_util/ScanObjectNNDataloader_Merged.py" />
+        <option value="$PROJECT_DIR$/PointConv/classification/provider.py" />
+        <option value="$PROJECT_DIR$/PointConv/data_util/ModelnetDataloader.py" />
+        <option value="$PROJECT_DIR$/PointConv/data_util/ScanObjectDataloader.py" />
+        <option value="$PROJECT_DIR$/PointConv/data_util/ScanObjectNNDataloader_Merged.py" />
+        <option value="$PROJECT_DIR$/PointMLP/classification/models/PointMLP.py" />
+        <option value="$PROJECT_DIR$/PointMLP/classification/provider.py" />
+        <option value="$PROJECT_DIR$/PointMLP/data_util/ModelnetDataloader.py" />
+        <option value="$PROJECT_DIR$/PointMLP/data_util/ScanObjectNNDataloader_Merged.py" />
+        <option value="$PROJECT_DIR$/PointMLP/segmentation/provider.py" />
+        <option value="$PROJECT_DIR$/PointMLP/train_classification_PointMLP.py" />
+        <option value="$PROJECT_DIR$/PointMLP/train_segmentation_PointMLP.py" />
+        <option value="$PROJECT_DIR$/PointMLP/utils.py" />
+        <option value="$PROJECT_DIR$/PointNet/classification/provider.py" />
+        <option value="$PROJECT_DIR$/PointNet2/classification/provider.py" />
+        <option value="$PROJECT_DIR$/PointNet2/data_util/ModelnetDataloader.py" />
+        <option value="$PROJECT_DIR$/PointNet2/data_util/ScanObjectDataloader.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/Point_Cloud_Classification.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-555" />
+    <option name="y" value="25" />
+    <option name="width" value="1440" />
+    <option name="height" value="875" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointMLP" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointMLP" type="462c0819:PsiDirectoryNode" />
+              <item name="classification" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointMLP" type="462c0819:PsiDirectoryNode" />
+              <item name="classification" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointMLP" type="462c0819:PsiDirectoryNode" />
+              <item name="data_util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointMLP" type="462c0819:PsiDirectoryNode" />
+              <item name="segmentation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointMLP" type="462c0819:PsiDirectoryNode" />
+              <item name="segmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointNet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointNet" type="462c0819:PsiDirectoryNode" />
+              <item name="classification" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointNet" type="462c0819:PsiDirectoryNode" />
+              <item name="classification" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointNet" type="462c0819:PsiDirectoryNode" />
+              <item name="data_util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointNet2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointNet2" type="462c0819:PsiDirectoryNode" />
+              <item name="classification" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointNet2" type="462c0819:PsiDirectoryNode" />
+              <item name="classification" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointNet2" type="462c0819:PsiDirectoryNode" />
+              <item name="data_util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointNet2" type="462c0819:PsiDirectoryNode" />
+              <item name="segmentation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Point_Cloud_Classification" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Point_Cloud_Classification" type="462c0819:PsiDirectoryNode" />
+              <item name="PointNet2" type="462c0819:PsiDirectoryNode" />
+              <item name="segmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PointNet2/data_util" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/PointTransformer" />
+      <recent name="$PROJECT_DIR$/PointMLP" />
+      <recent name="$PROJECT_DIR$/PointNet2" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/PointNet2/data_util" />
+      <recent name="$PROJECT_DIR$/PointMLP/data_util" />
+      <recent name="$PROJECT_DIR$/Point Transformer/data_util" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d1cdb20c-6b0a-4009-94cd-693570d3e2db" name="Default Changelist" comment="" />
+      <created>1687465372837</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687465372837</updated>
+      <workItem from="1687465380071" duration="6313000" />
+      <workItem from="1693779666585" duration="3781000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="10094000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="25" width="1440" height="875" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24391988" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32947233" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/PointNet++/classification/pointnet2_cls_ssg.py" />
+    <entry file="file://$PROJECT_DIR$/PointNet/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/PointMLP/segmentation/model/PointConv.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet2/train_classification_PointNet++.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="10" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointTransformer/data_util/ShapeNetDataloader.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointTransformer/segmentation/provider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointTransformer/segmentation/models/PointTransformer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointTransformer/train_segmentation_Point Transformer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding>
+            <element signature="e#1#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet2/segmentation/provider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet2/train_segmentation_PointNet++.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+          <folding>
+            <element signature="e#1#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointConv/classification/model/PointConv.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointConv/classification/provider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-140">
+          <caret line="280" selection-start-line="280" selection-end-line="280" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointConv/data_util/ModelnetDataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1295">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointConv/data_util/ScanObjectDataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-500">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <folding>
+            <element signature="e#1#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointConv/data_util/ScanObjectNNDataloader_Merged.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3080">
+          <caret line="35" column="2" selection-start-line="35" selection-start-column="2" selection-end-line="35" selection-end-column="2" />
+          <folding>
+            <element signature="e#1#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointConv/train_classification_PointConv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2585">
+          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/classification/models/PointMLP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-740">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/classification/provider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-590">
+          <caret line="236" column="8" selection-start-line="236" selection-start-column="8" selection-end-line="236" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/data_util/ModelnetDataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-365">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/data_util/ScanObjectDataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/data_util/ScanObjectNNDataloader_Merged.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3080">
+          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/data_util/ShapeNetDataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2610">
+          <caret line="174" selection-start-line="174" selection-end-line="174" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/segmentation/model/PointMLP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3605">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/segmentation/provider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-140">
+          <caret line="349" column="4" selection-start-line="349" selection-start-column="4" selection-end-line="349" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/train_classification_PointMLP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1625">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+          <folding>
+            <element signature="e#1#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/train_segmentation_PointMLP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-964">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#1#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointMLP/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-230">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet/classification/model/pointnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet/classification/provider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-635">
+          <caret line="15" column="31" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet/data_util/ModelNetDataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="22" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet/data_util/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1805">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet/train_classification_PointNet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet2/classification/models/Pointnet2_ssg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-65">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet2/classification/provider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="168" selection-start-line="168" selection-end-line="168" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet2/data_util/ModelnetDataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1400">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet2/data_util/ScanObjectDataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-500">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet2/data_util/ScanObjectNNDataloader_Merged.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#1#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet2/data_util/ShapeNetDataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2085">
+          <caret line="174" selection-start-line="174" selection-end-line="174" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointNet2/segmentation/models/pointnet2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

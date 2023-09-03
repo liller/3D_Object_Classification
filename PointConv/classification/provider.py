@@ -8,21 +8,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score, balanced_accuracy_
 
 
 def square_distance(src, dst):
-    """
-    Calculate Euclid distance between each two points.
 
-    src^T * dst = xn * xm + yn * ym + zn * zm；
-    sum(src^2, dim=-1) = xn*xn + yn*yn + zn*zn;
-    sum(dst^2, dim=-1) = xm*xm + ym*ym + zm*zm;
-    dist = (xn - xm)^2 + (yn - ym)^2 + (zn - zm)^2
-         = sum(src**2,dim=-1)+sum(dst**2,dim=-1)-2*src^T*dst
-
-    Input:
-        src: source points, [B, N, C]
-        dst: target points, [B, M, C]
-    Output:
-        dist: per-point square distance, [B, N, M]
-    """
     B, N, _ = src.shape
     _, M, _ = dst.shape
     dist = -2 * torch.matmul(src, dst.permute(0, 2, 1))
@@ -31,14 +17,7 @@ def square_distance(src, dst):
     return dist
 
 def index_points(points, idx):
-    """
 
-    Input:
-        points: input points data, [B, N, C]
-        idx: sample index data, [B, S]
-    Return:
-        new_points:, indexed points data, [B, S, C]
-    """
     device = points.device
     B = points.shape[0]
     view_shape = list(idx.shape)
@@ -50,13 +29,7 @@ def index_points(points, idx):
     return new_points
 
 def farthest_point_sample(xyz, npoint):
-    """
-    Input:
-        xyz: pointcloud data, [B, N, C]
-        npoint: number of samples
-    Return:
-        centroids: sampled pointcloud index, [B, npoint]
-    """
+
     #import ipdb; ipdb.set_trace()
     device = xyz.device
     B, N, C = xyz.shape
@@ -75,15 +48,7 @@ def farthest_point_sample(xyz, npoint):
     return centroids
 
 def query_ball_point(radius, nsample, xyz, new_xyz):
-    """
-    Input:
-        radius: local region radius
-        nsample: max sample number in local region
-        xyz: all points, [B, N, C]
-        new_xyz: query points, [B, S, C]
-    Return:
-        group_idx: grouped points index, [B, S, nsample]
-    """
+
     device = xyz.device
     B, N, C = xyz.shape
     _, S, _ = new_xyz.shape
@@ -97,29 +62,13 @@ def query_ball_point(radius, nsample, xyz, new_xyz):
     return group_idx
 
 def knn_point(nsample, xyz, new_xyz):
-    """
-    Input:
-        nsample: max sample number in local region
-        xyz: all points, [B, N, C]
-        new_xyz: query points, [B, S, C]
-    Return:
-        group_idx: grouped points index, [B, S, nsample]
-    """
+
     sqrdists = square_distance(new_xyz, xyz)
     _, group_idx = torch.topk(sqrdists, nsample, dim = -1, largest=False, sorted=False)
     return group_idx
 
 def sample_and_group(npoint, nsample, xyz, points, density_scale = None):
-    """
-    Input:
-        npoint:
-        nsample:
-        xyz: input points position data, [B, N, C]
-        points: input points data, [B, N, D]
-    Return:
-        new_xyz: sampled points position data, [B, 1, C]
-        new_points: sampled points data, [B, 1, N, C+D]
-    """
+
     B, N, C = xyz.shape
     S = npoint
     fps_idx = farthest_point_sample(xyz, npoint) # [B, npoint, C]
@@ -141,14 +90,7 @@ def sample_and_group(npoint, nsample, xyz, points, density_scale = None):
 
 
 def sample_and_group_all(xyz, points, density_scale = None):
-    """
-    Input:
-        xyz: input points position data, [B, N, C]
-        points: input points data, [B, N, D]
-    Return:
-        new_xyz: sampled points position data, [B, 1, C]
-        new_points: sampled points data, [B, 1, N, C+D]
-    """
+
     device = xyz.device
     B, N, C = xyz.shape
     #new_xyz = torch.zeros(B, 1, C).to(device)
@@ -165,16 +107,7 @@ def sample_and_group_all(xyz, points, density_scale = None):
         return new_xyz, new_points, grouped_xyz, grouped_density
 
 def group(nsample, xyz, points):
-    """
-    Input:
-        npoint:
-        nsample:
-        xyz: input points position data, [B, N, C]
-        points: input points data, [B, N, D]
-    Return:
-        new_xyz: sampled points position data, [B, 1, C]
-        new_points: sampled points data, [B, 1, N, C+D]
-    """
+
     B, N, C = xyz.shape
     S = N
     new_xyz = xyz
@@ -190,9 +123,7 @@ def group(nsample, xyz, points):
     return new_points, grouped_xyz_norm
 
 def compute_density(xyz, bandwidth):
-    '''
-    xyz: input points position data, [B, N, C]
-    '''
+
     #import ipdb; ipdb.set_trace()
     B, N, C = xyz.shape
     sqrdists = square_distance(xyz, xyz)
@@ -279,14 +210,7 @@ class PointConvDensitySetAbstraction(nn.Module):
         self.bandwidth = bandwidth
 
     def forward(self, xyz, points):
-        """
-        Input:
-            xyz: input points position data, [B, C, N]
-            points: input points data, [B, D, N]
-        Return:
-            new_xyz: sampled points position data, [B, C, S]
-            new_points_concat: sample points feature data, [B, D', S]
-        """
+
         B = xyz.shape[0]
         N = xyz.shape[2]
         xyz = xyz.permute(0, 2, 1)
@@ -328,24 +252,14 @@ class PointConvDensitySetAbstraction(nn.Module):
         return new_xyz, new_points
 
 def shift_point_cloud(batch_data, shift_range=0.1):
-    """ Randomly shift point cloud. Shift is per point cloud.
-        Input:
-          BxNx3 array, original batch of point clouds
-        Return:
-          BxNx3 array, shifted batch of point clouds
-    """
+
     B, N, C = batch_data.shape
     shifts = np.random.uniform(-shift_range, shift_range, (B,3))
     for batch_index in range(B):
         batch_data[batch_index,:,:] += shifts[batch_index,:]
     return batch_data
 def random_scale_point_cloud(batch_data, scale_low=0.8, scale_high=1.25):
-    """ Randomly scale the point cloud. Scale is per point cloud.
-        Input:
-            BxNx3 array, original batch of point clouds
-        Return:
-            BxNx3 array, scaled batch of point clouds
-    """
+
     B, N, C = batch_data.shape
     scales = np.random.uniform(scale_low, scale_high, B)
     for batch_index in range(B):
@@ -364,13 +278,7 @@ def random_point_dropout_v2(batch_pc, max_dropout_ratio=0.875):
 
     return batch_pc
 def shuffle_points(batch_data):
-    """ Shuffle orders of points in each point cloud -- changes FPS behavior.
-        Use the same shuffling idx for the entire batch.
-        Input:
-            BxNxC array
-        Output:
-            BxNxC array
-    """
+
     idx = np.arange(batch_data.shape[1])
     np.random.shuffle(idx)
     return batch_data[:,idx,:]

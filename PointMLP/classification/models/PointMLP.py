@@ -12,7 +12,7 @@ def pointMLP(num_classes=40, **kwargs) -> Model:
                    k_neighbors=[24, 24, 24, 24], reducers=[2, 2, 2, 2], **kwargs)
 
 def cal_loss(pred, gold, smoothing=True):
-    ''' Calculate cross entropy loss, apply label smoothing if needed. '''
+
 
     gold = gold.contiguous().view(-1)
 

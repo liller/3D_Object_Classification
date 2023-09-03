@@ -6,13 +6,7 @@ import h5py
 
 #输出为【1024，6】
 def farthest_point_sample_first(point, npoint):
-    """
-    Input:
-        xyz: pointcloud data, [N, D] [10000,6]
-        npoint: number of samples
-    Return:
-        centroids: sampled pointcloud index, [npoint, D] [1024,6](只是为了筛选符合要求的1024个点，因此没有丢弃法向量)
-    """
+
     #shape = [1000,6]
     N, D = point.shape
     #取前三维，剩下的三维为法向量丢弃，【1000，3】

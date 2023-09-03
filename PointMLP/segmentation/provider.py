@@ -1,7 +1,39 @@
+import numpy as np
+import math
+import random
+import os
+import sys
+import glob
 import torch
+import json
+import h5py
+import scipy.spatial.distance
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms, utils
+import torch.optim as optim
+
+from torch.autograd import Variable
+import plotly.graph_objects as go
+import plotly.express as pxz
+from path import Path
+from torch.optim.lr_scheduler import CosineAnnealingLR, StepLR
+
+import torch.backends.cudnn as cudnn
 import torch.nn as nn
 import torch.nn.functional as F
 
+from tqdm import tqdm
+import matplotlib.pyplot as plt
+
+
+import argparse
+import datetime
+import logging
+import importlib
+import shutil
+import warnings
+import pickle
+from sklearn.metrics import confusion_matrix, accuracy_score, balanced_accuracy_score
 
 #根据传入参数选择相应的激活函数
 def get_activation(activation):
@@ -28,6 +60,7 @@ def square_distance(src, dst):
     dist += torch.sum(src ** 2, -1).view(B, N, 1)
     dist += torch.sum(dst ** 2, -1).view(B, 1, M)
     return dist
+
 
 def index_points(points, idx):
 
@@ -145,6 +178,7 @@ class LocalGrouper(nn.Module):
         new_points = torch.cat([grouped_points, new_points.view(B, S, 1, -1).repeat(1, 1, self.kneighbors, 1)], dim=-1)
         return new_xyz, new_points
 
+
 #包含卷积、批归一化和激活函数的一维卷积神经网络模块。
 class ConvBNReLU1D(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size=1, bias=True, activation='relu'):
@@ -202,7 +236,11 @@ class ConvBNReLURes1D(nn.Module):
 class PreExtraction(nn.Module):
     def __init__(self, channels, out_channels,  blocks=1, groups=1, res_expansion=1, bias=True,
                  activation='relu', use_xyz=True):
-
+        """
+        input: [b,g,k,d]: output:[b,d,g]
+        :param channels:
+        :param blocks:
+        """
         super(PreExtraction, self).__init__()
         in_channels = 3+2*channels if use_xyz else 2*channels
         #对输入模块进行特征转换
@@ -234,7 +272,11 @@ class PreExtraction(nn.Module):
 
 class PosExtraction(nn.Module):
     def __init__(self, channels, blocks=1, groups=1, res_expansion=1, bias=True, activation='relu'):
-
+        """
+        input[b,d,g]; output[b,d,g]
+        :param channels:
+        :param blocks:
+        """
         super(PosExtraction, self).__init__()
         operation = []
         for _ in range(blocks):
@@ -247,72 +289,114 @@ class PosExtraction(nn.Module):
         # 输入为上[b, d, g]
         return self.operation(x)
 
-class Model(nn.Module):
-    def __init__(self, points=1024, class_num=40, embed_dim=64, groups=1, res_expansion=1.0,
-                 activation="relu", bias=True, use_xyz=True, normalize="center",
-                 dim_expansion=[2, 2, 2, 2], pre_blocks=[2, 2, 2, 2], pos_blocks=[2, 2, 2, 2],
-                 k_neighbors=[32, 32, 32, 32], reducers=[2, 2, 2, 2], **kwargs):
-        super(Model, self).__init__()
-        self.stages = len(pre_blocks)
-        self.class_num = class_num
-        self.points = points
-        #输入维度是3（假设输入的点云数据只包含坐标信息），输出是64
-        self.embedding = ConvBNReLU1D(3, embed_dim, bias=bias, activation=activation)
-        assert len(pre_blocks) == len(k_neighbors) == len(reducers) == len(pos_blocks) == len(dim_expansion), \
-            "Please check stage number consistent for pre_blocks, pos_blocks k_neighbors, reducers."
-        self.local_grouper_list = nn.ModuleList()
-        self.pre_blocks_list = nn.ModuleList()
-        self.pos_blocks_list = nn.ModuleList()
-        last_channel = embed_dim
-        anchor_points = self.points
-        #构造affine、pre、posmodule
-        for i in range(len(pre_blocks)):
-            #？？？
-            out_channel = last_channel * dim_expansion[i]
-            pre_block_num = pre_blocks[i]
-            pos_block_num = pos_blocks[i]
-            kneighbor = k_neighbors[i]
-            reduce = reducers[i]
-            anchor_points = anchor_points // reduce
-            # append local_grouper_list
-            #anchor_points fps采样点数
-            local_grouper = LocalGrouper(last_channel, anchor_points, kneighbor, use_xyz, normalize)  # [b,g,k,d]
-            self.local_grouper_list.append(local_grouper)
-            # append pre_block_list
-            pre_block_module = PreExtraction(last_channel, out_channel, pre_block_num, groups=groups,
-                                             res_expansion=res_expansion,
-                                             bias=bias, activation=activation, use_xyz=use_xyz)
-            self.pre_blocks_list.append(pre_block_module)
-            # append pos_block_list
-            pos_block_module = PosExtraction(out_channel, pos_block_num, groups=groups,
-                                             res_expansion=res_expansion, bias=bias, activation=activation)
-            self.pos_blocks_list.append(pos_block_module)
 
-            last_channel = out_channel
 
-        self.act = get_activation(activation)
-        self.classifier = nn.Sequential(
-            nn.Linear(last_channel, 512),
-            nn.BatchNorm1d(512),
-            self.act,
-            nn.Dropout(0.5),
-            nn.Linear(512, 256),
-            nn.BatchNorm1d(256),
-            self.act,
-            nn.Dropout(0.5),
-            nn.Linear(256, self.class_num)
-        )
 
-    def forward(self, x):
-        xyz = x.permute(0, 2, 1)
-        batch_size, _, _ = x.size()
-        x = self.embedding(x)  # B,D,N
-        for i in range(self.stages):
-            # Give xyz[b, p, 3] and fea[b, p, d], return new_xyz[b, g, 3] and new_fea[b, g, k, d]
-            xyz, x = self.local_grouper_list[i](xyz, x.permute(0, 2, 1))  # [b,g,3]  [b,g,k,d]
-            x = self.pre_blocks_list[i](x)  # [b,d,g]
-            x = self.pos_blocks_list[i](x)  # [b,d,g]
+class PointNetFeaturePropagation(nn.Module):
+    def __init__(self, in_channel, out_channel, blocks=1, groups=1, res_expansion=1.0, bias=True, activation='relu'):
+        super(PointNetFeaturePropagation, self).__init__()
+        self.fuse = ConvBNReLU1D(in_channel, out_channel, 1, bias=bias)
+        self.extraction = PosExtraction(out_channel, blocks, groups=groups,
+                                        res_expansion=res_expansion, bias=bias, activation=activation)
 
-        x = F.adaptive_max_pool1d(x, 1).squeeze(dim=-1)
-        x = self.classifier(x)
-        return x
+
+    def forward(self, xyz1, xyz2, points1, points2):
+
+        # xyz1 = xyz1.permute(0, 2, 1)
+        # xyz2 = xyz2.permute(0, 2, 1)
+
+        points2 = points2.permute(0, 2, 1)
+        B, N, C = xyz1.shape
+        _, S, _ = xyz2.shape
+
+        if S == 1:
+            interpolated_points = points2.repeat(1, N, 1)
+        else:
+            dists = square_distance(xyz1, xyz2)
+            dists, idx = dists.sort(dim=-1)
+            dists, idx = dists[:, :, :3], idx[:, :, :3]  # [B, N, 3]
+
+            dist_recip = 1.0 / (dists + 1e-8)
+            norm = torch.sum(dist_recip, dim=2, keepdim=True)
+            weight = dist_recip / norm
+            interpolated_points = torch.sum(index_points(points2, idx) * weight.view(B, N, 3, 1), dim=2)
+
+        if points1 is not None:
+            points1 = points1.permute(0, 2, 1)
+            new_points = torch.cat([points1, interpolated_points], dim=-1)
+        else:
+            new_points = interpolated_points
+
+        new_points = new_points.permute(0, 2, 1)
+        new_points = self.fuse(new_points)
+        new_points = self.extraction(new_points)
+        return new_points
+
+
+class IOStream():
+    def __init__(self, path):
+        self.f = open(path, 'a')
+
+    def cprint(self, text):
+        print(text)
+        self.f.write(text + '\n')
+        self.f.flush()
+
+    def close(self):
+        self.f.close()
+
+
+def to_categorical(y, num_classes):
+
+    new_y = torch.eye(num_classes)[y.cpu().data.numpy(),]
+    if (y.is_cuda):
+        return new_y.cuda()
+    return new_y
+
+
+def compute_overall_iou(pred, target, num_classes):
+    shape_ious = []
+    pred = pred.max(dim=2)[1]  # (batch_size, num_points)  the pred_class_idx of each point in each sample
+    pred_np = pred.cpu().data.numpy()
+
+    target_np = target.cpu().data.numpy()
+    for shape_idx in range(pred.size(0)):  # sample_idx
+        part_ious = []
+        for part in range(
+                num_classes):  # class_idx! no matter which category, only consider all part_classes of all categories, check all 50 classes
+            # for target, each point has a class no matter which category owns this point! also 50 classes!!!
+            # only return 1 when both belongs to this class, which means correct:
+            I = np.sum(np.logical_and(pred_np[shape_idx] == part, target_np[shape_idx] == part))
+            # always return 1 when either is belongs to this class:
+            U = np.sum(np.logical_or(pred_np[shape_idx] == part, target_np[shape_idx] == part))
+
+            F = np.sum(target_np[shape_idx] == part)
+
+            if F != 0:
+                iou = I / float(U)  # iou across all points for this class
+                part_ious.append(iou)  # append the iou of this class
+        shape_ious.append(
+            np.mean(part_ious))  # each time append an average iou across all classes of this sample (sample_level!)
+
+    return shape_ious  # [batch_size]
+
+
+def weight_init(m):
+    if isinstance(m, torch.nn.Linear):
+        torch.nn.init.xavier_normal_(m.weight)
+        if m.bias is not None:
+            torch.nn.init.constant_(m.bias, 0)
+    elif isinstance(m, torch.nn.Conv2d):
+        torch.nn.init.xavier_normal_(m.weight)
+        if m.bias is not None:
+            torch.nn.init.constant_(m.bias, 0)
+    elif isinstance(m, torch.nn.Conv1d):
+        torch.nn.init.xavier_normal_(m.weight)
+        if m.bias is not None:
+            torch.nn.init.constant_(m.bias, 0)
+    elif isinstance(m, torch.nn.BatchNorm2d):
+        torch.nn.init.constant_(m.weight, 1)
+        torch.nn.init.constant_(m.bias, 0)
+    elif isinstance(m, torch.nn.BatchNorm1d):
+        torch.nn.init.constant_(m.weight, 1)
+        torch.nn.init.constant_(m.bias, 0)

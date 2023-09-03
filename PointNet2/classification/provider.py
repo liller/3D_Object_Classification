@@ -10,21 +10,7 @@ def inplace_relu(m):
         m.inplace=True
 
 def square_distance(src, dst):
-    """
-    Calculate Euclid distance between each two points.
 
-    src^T * dst = xn * xm + yn * ym + zn * zm；
-    sum(src^2, dim=-1) = xn*xn + yn*yn + zn*zn;
-    sum(dst^2, dim=-1) = xm*xm + ym*ym + zm*zm;
-    dist = (xn - xm)^2 + (yn - ym)^2 + (zn - zm)^2
-         = sum(src**2,dim=-1)+sum(dst**2,dim=-1)-2*src^T*dst
-
-    Input:
-        src: source points, [B, N, C]
-        dst: target points, [B, M, C]
-    Output:
-        dist: per-point square distance, [B, N, M]
-    """
     B, N, _ = src.shape
     _, M, _ = dst.shape
     dist = -2 * torch.matmul(src, dst.permute(0, 2, 1))
@@ -35,14 +21,7 @@ def square_distance(src, dst):
 
 #输入点云中按索引提取指定的点
 def index_points(points, idx):
-    """
 
-    Input:
-        points: input points data, [B, N, C]，B表示批量大小，N表示点云中的点数，C表示每个点的特征数
-        idx: sample index data, [B, S]，参数idx为要提取的点的索引，其中S表示要提取的点的数量
-    Return:
-        new_points:, indexed points data, [B, S, C]
-    """
     device = points.device
     B = points.shape[0]
     view_shape = list(idx.shape)
@@ -55,13 +34,7 @@ def index_points(points, idx):
 
 
 def farthest_point_sample(xyz, npoint):
-    """
-    Input:
-        xyz: pointcloud data, [B, N, 3]
-        npoint: number of samples
-    Return:
-        centroids: sampled pointcloud index, [B, npoint]，采样后的点的索引
-    """
+
     device = xyz.device
     B, N, C = xyz.shape
     centroids = torch.zeros(B, npoint, dtype=torch.long).to(device)
@@ -80,15 +53,7 @@ def farthest_point_sample(xyz, npoint):
 
 #输入的点云数据中，随机选择一定数量的采样点（npoint），然后以这些采样点为中心，分别对每个采样点周围的点进行局部区域的划分，最终返回每个采样点周围划分出的局部区域中的点的索引
 def query_ball_point(radius, nsample, xyz, new_xyz):
-    """
-    Input:
-        radius: local region radius
-        nsample: max sample number in local region
-        xyz: all points, [B, N, 3]
-        new_xyz: query points, [B, S, 3]
-    Return:
-        group_idx: grouped points index, [B, S, nsample]
-    """
+
     device = xyz.device
     B, N, C = xyz.shape
     _, S, _ = new_xyz.shape
@@ -103,17 +68,7 @@ def query_ball_point(radius, nsample, xyz, new_xyz):
 
 
 def sample_and_group(npoint, radius, nsample, xyz, points, returnfps=False):
-    """
-    Input:
-        npoint:
-        radius:
-        nsample:
-        xyz: input points position data, [B, N, 3]
-        points: input points data, [B, N, D]
-    Return:
-        new_xyz: sampled points position data, [B, npoint, nsample, 3]
-        new_points: sampled points data, [B, npoint, nsample, 3+D]
-    """
+
     B, N, C = xyz.shape
     S = npoint
     #先用FPS进行下采样，得到新的采样点的位置
@@ -138,14 +93,7 @@ def sample_and_group(npoint, radius, nsample, xyz, points, returnfps=False):
 
 
 def sample_and_group_all(xyz, points):
-    """
-    Input:
-        xyz: input points position data, [B, N, 3]
-        points: input points data, [B, N, D]
-    Return:
-        new_xyz: sampled points position data, [B, 1, 3]
-        new_points: sampled points data, [B, 1, N, 3+D]
-    """
+
     device = xyz.device
     B, N, C = xyz.shape
     new_xyz = torch.zeros(B, 1, C).to(device)
@@ -173,14 +121,7 @@ class PointNetSetAbstraction(nn.Module):
         self.group_all = group_all
 
     def forward(self, xyz, points):
-        """
-        Input:
-            xyz: input points position data, [B, C, N]
-            points: input points data, [B, D, N]
-        Return:
-            new_xyz: sampled points position data, [B, C, S]
-            new_points_concat: sample points feature data, [B, D', S]
-        """
+
         xyz = xyz.permute(0, 2, 1)
         if points is not None:
             points = points.permute(0, 2, 1)
@@ -206,12 +147,7 @@ class PointNetSetAbstraction(nn.Module):
 
 #点云数据进行随机平移，数据增强，训练模型对平移不变性的学习能力
 def shift_point_cloud(batch_data, shift_range=0.1):
-    """ Randomly shift point cloud. Shift is per point cloud.
-        Input:
-          BxNx3 array, original batch of point clouds
-        Return:
-          BxNx3 array, shifted batch of point clouds
-    """
+
     B, N, C = batch_data.shape
     shifts = np.random.uniform(-shift_range, shift_range, (B,3))
     for batch_index in range(B):
@@ -220,12 +156,7 @@ def shift_point_cloud(batch_data, shift_range=0.1):
 
 #点云数据进行随机缩放，将每个点的坐标乘以该点云对应的随机缩放比例
 def random_scale_point_cloud(batch_data, scale_low=0.8, scale_high=1.25):
-    """ Randomly scale the point cloud. Scale is per point cloud.
-        Input:
-            BxNx3 array, original batch of point clouds
-        Return:
-            BxNx3 array, scaled batch of point clouds
-    """
+
     B, N, C = batch_data.shape
     scales = np.random.uniform(scale_low, scale_high, B)
     for batch_index in range(B):
@@ -235,7 +166,7 @@ def random_scale_point_cloud(batch_data, scale_low=0.8, scale_high=1.25):
 
 #实现点云随机点删除，模拟pointcloud遮挡或者丢失的情况
 def random_point_dropout(batch_pc, max_dropout_ratio=0.875):
-    ''' batch_pc: BxNx3 '''
+
     for b in range(batch_pc.shape[0]):
         dropout_ratio =  np.random.random()*max_dropout_ratio # 0~0.875
         drop_idx = np.where(np.random.random((batch_pc.shape[1]))<=dropout_ratio)[0]
